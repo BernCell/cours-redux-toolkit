@@ -20,7 +20,7 @@ const PicCard = ({ pic }) => {
     };
 
     axios.put("http://localhost:5000/pictures/" + pic.id, data).then(() => {
-      dispatch(editPicture([data, pic.id]));
+      dispatch(editPicture([data.artist, pic.id]));
 
     })
   };
