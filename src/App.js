@@ -10,23 +10,23 @@ const App = () => {
   const dispatch = useDispatch();
   const picsData = useSelector((state) => state.pictures.pictures);
 
-  // const getPictures = () => {
-
-  // }
-
-  useEffect(() => {
-    // getPictures()
+  const getPictures = () => {
     axios
       .get("http://localhost:5000/pictures")
       .then((res) => dispatch(setPicturesData(res.data)));
+  }
 
-  }, [dispatch]);
+  useEffect(() => {
+    getPictures()
+
+
+  }, []);
 
   return (
     <>
       <h1>NFT Gallery</h1>
-      {/* <Form getPictures={getPictures} /> */}
-      <Form />
+      <Form getPictures={getPictures} />
+      {/* <Form /> */}
       <div className="cards-container">
         {picsData?.map((pic, index) => (
           <PicCard key={index} pic={pic} />
